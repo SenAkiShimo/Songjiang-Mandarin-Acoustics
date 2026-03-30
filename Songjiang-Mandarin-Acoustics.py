@@ -37,5 +37,5 @@ file_path_md = 'audio_md/01.wav'
 analyze_speech(file_path_sj, 'Songjiang Wu - Sentence 01')
 analyze_speech(file_path_md, 'Mandarin - Sentence 01')
 
-print(f"Current Working Directory: {os.getcwd()}")
-print(f"Files in this folder: {os.listdir('.')}")
+#print(f"Current Working Directory: {os.getcwd()}")
+#print(f"Files in this folder: {os.listdir('.')}")
