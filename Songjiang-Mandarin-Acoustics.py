@@ -5,6 +5,8 @@ import numpy as np
 import os
 import parselmouth
 import pandas as pd
+import seaborn as sns
+from scipy import stats
 
 def analyze_speech(file_path, label):
     # Load audio file
@@ -58,6 +60,8 @@ def extract_features(file_path, label):
         max_pitch = np.max(pitch_values)
         min_pitch = np.min(pitch_values)
         pitch_range = max_pitch - min_pitch
+        duration = librosa.get_duration(y=y, sr=sr)
+        
     else:
         mean_pitch = max_pitch = min_pitch = pitch_range = 0
 
@@ -65,6 +69,7 @@ def extract_features(file_path, label):
         'label': label,
         'mean_pitch': mean_pitch,
         'pitch_range': pitch_range,
+        'duration': duration,
         'mfcc_1': mfcc_mean[0]
     }
 
@@ -84,9 +89,15 @@ df = pd.DataFrame(results)
 print("\n--- Feature Summary ---")
 print(df.groupby('label').mean()) # See the averages per language
 
-# Optional: Save to CSV for later
-# df.to_csv('acoustic_results.csv', index=False)
+sns.scatterplot(data=df, x='mean_pitch', y='mfcc_1', hue='label')
+plt.title('Acoustic Space: Songjiang vs Mandarin')
+plt.show()
 
+sj_pitch = df[df['label'] == 'Songjiang']['mean_pitch']
+md_pitch = df[df['label'] == 'Mandarin']['mean_pitch']
+
+t_stat, p_val = stats.ttest_ind(sj_pitch, md_pitch)
+print(f"P-value: {p_val}")
 
 #file_path_sj = 'audio_sj/01.wav'
 #file_path_md = 'audio_md/01.wav'
