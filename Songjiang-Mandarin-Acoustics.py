@@ -99,6 +99,15 @@ md_pitch = df[df['label'] == 'Mandarin']['mean_pitch']
 t_stat, p_val = stats.ttest_ind(sj_pitch, md_pitch)
 print(f"P-value: {p_val}")
 
+sj_pitch = df[df['label'] == 'Songjiang']['mean_pitch']
+md_pitch = df[df['label'] == 'Mandarin']['mean_pitch']
+
+t_stat, p_val_pitch = stats.ttest_rel(sj_pitch, md_pitch)
+
+print(f"Pitch Mean (SJ): {sj_pitch.mean():.2f} Hz")
+print(f"Pitch Mean (MD): {md_pitch.mean():.2f} Hz")
+print(f"P-value: {p_val_pitch:.4f}")
+
 #file_path_sj = 'audio_sj/01.wav'
 #file_path_md = 'audio_md/01.wav'
 
