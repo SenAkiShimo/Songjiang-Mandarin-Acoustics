@@ -5,7 +5,7 @@
 
 ## 1. Project Overview
 This project performs an automated acoustic comparison between **Songjiang Wu (松江话)** and **Standard Mandarin (普通话)**.
-Using Python, I analyzed a single-speaker dataset of 20 parallel sentences to identify differences in pitch, duration, and timbre.
+Using Python, I analyzed a single-speaker dataset of 20 pairs sentences to identify differences in pitch, duration, and timbre.
 
 ---
 
@@ -58,8 +58,6 @@ To ensure scientific accuracy, the following steps were taken:
 
 ## 4. Conclusion
 
-The mean duration of Songjiang Wu sentences was 1.72s, while Mandarin was 2.09s. A paired t-test yielded a p-value of 0.2432 for duration, indicating no statistically significant difference in overall speech rate between the two languages for this specific speaker and dataset.
-
-Similarly, the overall pitch register is highly similar (P = 0.2432), suggesting that the perceived difference between Songjiang Wu and Mandarin lies in dynamic tone contours (shape) and timbre (MFCC) rather than a simple shift in average pitch.
+The overall pitch register is highly similar (P = 0.2432), suggesting that the perceived difference between Songjiang Wu and Mandarin lies in dynamic tone contours (shape) and timbre (MFCC) rather than a simple shift in average pitch.
 
 Therefore, although the mean pitch difference is not statistically significant, the normalized pitch contours reveal that this is primarily due to the high variance and wide pitch range of Songjiang Wu (150Hz–275Hz). The dialect's acoustic identity is defined by its tonal volatility (extreme highs and lows) rather than a shift in the average frequency register.
